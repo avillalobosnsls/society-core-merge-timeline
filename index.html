@@ -85,12 +85,13 @@
   .mkt.quiet{background:var(--band);border-color:var(--line);}
   .mkt.quiet .k{color:var(--muted);}
 
-  /* process strip */
-  .process{margin:26px 34px 0;border:1px solid var(--line);border-radius:12px;background:var(--band);padding:18px 22px;}
-  .process h2{margin:0 0 10px;font-size:15px;color:var(--navy);letter-spacing:-.01em;}
-  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font-size:13px;line-height:1.5;}
-  .pgrid b{color:var(--navy);}
-  .pgrid .ic{font-size:17px;margin-bottom:4px;}
+  /* design & content requests subsection */
+  .process{margin:26px 34px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:#fff;box-shadow:0 4px 18px rgba(20,35,59,.07);}
+  .process .dhead h2{font-size:18px;}
+  .process ul{margin:0;padding-left:19px;font-size:14px;line-height:1.6;}
+  .process li{margin:7px 0;}
+  .process b{color:var(--navy);}
   .ask{margin:16px 34px 0;background:var(--blue-soft);border:1px solid #cddafa;border-radius:12px;
     padding:14px 22px;font-size:13.5px;line-height:1.5;}
   .ask b{color:#2a55ab;}
@@ -134,11 +135,16 @@
   <div class="detail" id="detail"></div>
 
   <div class="process">
-    <h2>How design &amp; content requests flow</h2>
-    <div class="pgrid">
-      <div><div class="ic">🗓️</div><b>Planned by default.</b> Requests tied to a release go on a shared timeline with the build schedule — no surprises, nothing cut for time.</div>
-      <div><div class="ic">⚡</div><b>Ad-hoc lane exists.</b> Content materials sometimes can't wait for a planning cycle — flag them as ad-hoc and we triage together in this sync. Exception, not the default.</div>
-      <div><div class="ic">🤝</div><b>This sync is the venue.</b> Planned items get slotted, ad-hoc items get triaged, and this timeline stays current.</div>
+    <div class="dhead">
+      <h2>How design &amp; content requests flow</h2>
+      <p class="hwhen">The working agreement between Product and Marketing</p>
+    </div>
+    <div class="dbody">
+      <ul>
+        <li><b>Planned by default</b> — requests tied to a release go on a shared timeline with the build schedule, so nothing lands as a surprise and nothing gets cut for time</li>
+        <li><b>Ad-hoc lane exists</b> — content materials sometimes can't wait for a planning cycle; flag them as ad-hoc and we triage together in this sync (the exception, not the default)</li>
+        <li><b>This sync is the venue</b> — planned items get slotted, ad-hoc items get triaged, and this timeline stays current</li>
+      </ul>
     </div>
   </div>
 

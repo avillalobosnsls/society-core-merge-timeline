@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Core + Society — App Merge Timeline</title>
+<style>
+  :root{
+    --navy:#0d2240; --navy2:#16233b; --ink:#1f2a44; --muted:#6b7890; --line:#e6e9f0;
+    --gold:#e0a100; --gold-soft:#fff3d6; --teal:#2a9d8f; --teal-soft:#e2f3f1;
+    --blue:#3b6fd4; --blue-soft:#e8eefb; --red:#e5484d;
+    --paused:#8a93a8; --paused-soft:#eef1f6; --band:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef1f6;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1220px;margin:28px auto;background:#fff;border-radius:14px;
+    box-shadow:0 8px 30px rgba(20,35,59,.10);overflow:hidden;}
+
+  /* header */
+  header{background:linear-gradient(120deg,var(--navy) 0%,#1b3358 100%);color:#fff;padding:30px 34px 26px;position:relative;}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+    background:linear-gradient(90deg,var(--gold) 0%,#f6c445 55%,var(--teal) 100%);}
+  .brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:#f6c445;margin-bottom:12px;}
+  .brand .x{color:#8fa3c2;font-weight:600;letter-spacing:0;text-transform:none;}
+  h1{margin:0;font-size:30px;letter-spacing:-.02em;line-height:1.12;}
+  h1 .g{color:#f6c445;}
+  .sub{margin:10px 0 0;color:#c2cfe4;font-size:14.5px;max-width:820px;line-height:1.5;}
+  .sub b{color:#fff;}
+  .stamp{margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 14px;font-size:12.5px;color:#dbe4f2;font-weight:600;}
+  .stamp .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
+
+  /* foundation ribbon */
+  .foundation{display:flex;align-items:center;gap:14px;background:var(--teal-soft);
+    border-bottom:1px solid var(--line);padding:14px 34px;font-size:14px;}
+  .foundation .badge{flex:0 0 auto;background:var(--teal);color:#fff;font-size:11px;font-weight:800;
+    letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:4px 10px;}
+  .foundation b{color:var(--navy);}
+
+  /* timeline */
+  .tl{padding:34px 34px 10px;}
+  .spine{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .spine::before{content:"";position:absolute;left:2%;right:2%;top:9px;height:4px;border-radius:2px;
+    background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 20%,var(--gold) 20%,var(--gold) 52%,#c8d0de 52%,#c8d0de 100%);}
+  .stage{position:relative;padding-top:34px;}
+  .node{position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;
+    border:5px solid #fff;box-shadow:0 1px 4px rgba(20,35,59,.3);}
+  .n-done{background:var(--teal);}
+  .n-live{background:var(--gold);}
+  .n-next{background:var(--blue);}
+  .n-paused{background:var(--paused);}
+  .n-future{background:#fff;border:5px solid #c8d0de;box-shadow:none;}
+
+  .card{border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%;
+    display:flex;flex-direction:column;background:#fff;}
+  .card.hot{border-color:var(--gold);box-shadow:0 4px 16px rgba(224,161,0,.18);}
+  .chead{padding:14px 16px 10px;}
+  .pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+    border-radius:999px;padding:3px 10px;margin-bottom:8px;}
+  .p-done{background:var(--teal-soft);color:#137165;}
+  .p-live{background:var(--gold-soft);color:#8a6300;}
+  .p-next{background:var(--blue-soft);color:#2a55ab;}
+  .p-paused{background:var(--paused-soft);color:#5b6478;}
+  .p-future{background:#f2f4f8;color:#8a93a8;}
+  .v{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
+  .when{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:3px;}
+  .cbody{padding:0 16px 14px;font-size:13px;line-height:1.5;flex:1;}
+  .cbody .k{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+    margin:10px 0 4px;}
+  .cbody ul{margin:0;padding-left:17px;}
+  .cbody li{margin:3px 0;}
+  .mkt{background:var(--gold-soft);border-top:1px solid #f3ddad;padding:10px 16px 12px;font-size:12.5px;line-height:1.45;}
+  .mkt .k{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#8a6300;margin-bottom:3px;}
+  .mkt.none{background:var(--band);border-top:1px solid var(--line);}
+  .mkt.none .k{color:var(--muted);}
+
+  /* process strip */
+  .process{margin:26px 34px 0;border:1px solid var(--line);border-radius:12px;background:var(--band);
+    padding:18px 22px;}
+  .process h2{margin:0 0 10px;font-size:15px;color:var(--navy);letter-spacing:-.01em;}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font-size:13px;line-height:1.5;}
+  .pgrid b{color:var(--navy);}
+  .pgrid .ic{font-size:17px;margin-bottom:4px;}
+
+  .ask{margin:16px 34px 0;background:var(--blue-soft);border:1px solid #cddafa;border-radius:12px;
+    padding:14px 22px;font-size:13.5px;line-height:1.5;}
+  .ask b{color:#2a55ab;}
+
+  .foot{padding:18px 34px 24px;color:var(--muted);font-size:12px;line-height:1.6;margin-top:20px;
+    border-top:1px solid var(--line);background:var(--band);}
+  .foot b{color:var(--ink);}
+
+  @media (max-width:900px){
+    .spine{grid-template-columns:1fr;gap:14px;}
+    .spine::before{left:14px;right:auto;top:2%;bottom:2%;width:4px;height:auto;
+      background:linear-gradient(180deg,var(--teal) 0%,var(--teal) 20%,var(--gold) 20%,var(--gold) 52%,#c8d0de 52%,#c8d0de 100%);}
+    .stage{padding-top:0;padding-left:40px;}
+    .node{left:14px;top:14px;transform:translateX(-40%);}
+    .pgrid{grid-template-columns:1fr;}
+    h1{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">NSLS <span class="x">✕</span> The Society <span class="x">· Members Area App</span></div>
+    <h1>Core + Society: <span class="g">one app, one login</span></h1>
+    <p class="sub">The Members Area app (Core) and Society are merging into a single member experience.
+      It happens in stages — each release below shows <b>what members get</b> and <b>what Marketing owns</b>,
+      so content work can be planned alongside the builds.</p>
+    <span class="stamp"><span class="dot"></span>Updated Jul 21, 2026 · for the Marketing Sync</span>
+  </header>
+
+  <div class="foundation">
+    <span class="badge">✓ Foundation shipped</span>
+    <span><b>Centralized login is live (June 2026):</b> one NSLS account now works across Core and Society —
+    the piece that makes every release below possible.</span>
+  </div>
+
+  <div class="tl">
+    <div class="spine">
+
+      <div class="stage">
+        <div class="node n-done"></div>
+        <div class="card">
+          <div class="chead">
+            <span class="pill p-done">Shipped</span>
+            <div class="v">v1</div>
+            <div class="when">Live since Jun 12</div>
+          </div>
+          <div class="cbody">
+            <div class="k">Members get</div>
+            <ul>
+              <li>Refreshed Members Area app</li>
+              <li>Full Foundations of Leadership experience</li>
+              <li>Chapter Leader Dashboard</li>
+              <li>New navigation</li>
+            </ul>
+            <div class="k">Society content</div>
+            <ul><li>Not yet — Core only</li></ul>
+          </div>
+          <div class="mkt none"><div class="k">Marketing owns</div>Done — thank you! 💛</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node n-live"></div>
+        <div class="card hot">
+          <div class="chead">
+            <span class="pill p-live">In Apple review</span>
+            <div class="v">v1.1 · Step 1</div>
+            <div class="when">Submitted Jul 20 · the door opens</div>
+          </div>
+          <div class="cbody">
+            <div class="k">Members get</div>
+            <ul>
+              <li><b>“Explore Society”</b> — opens the Society dashboard right from the app</li>
+              <li>Account deletion w/ 30-day grace (Apple requirement)</li>
+            </ul>
+            <div class="k">Heads-up</div>
+            <ul><li>In-app program upsells removed — purchases now happen on nsls.org (Apple 30% rule)</li></ul>
+          </div>
+          <div class="mkt none"><div class="k">Marketing owns</div>Awareness only: program purchase links move to the website.</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node n-live"></div>
+        <div class="card hot">
+          <div class="chead">
+            <span class="pill p-live">Up next · ~2 wks</span>
+            <div class="v">v1.1 · Step 2</div>
+            <div class="when">Fast follow · early Aug</div>
+          </div>
+          <div class="cbody">
+            <div class="k">Members get</div>
+            <ul>
+              <li>New <b>dashboard card promoting Society</b> on the app home screen (Tyler’s design) — every member sees it</li>
+            </ul>
+            <div class="k">Being explored</div>
+            <ul><li>Society card in the Member Benefits list for extra discoverability</li></ul>
+          </div>
+          <div class="mkt"><div class="k">Marketing owns — near-term ask ⭐</div><b>Final CTA copy + design sign-off</b> for the dashboard card. Dev builds this week.</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node n-paused"></div>
+        <div class="card">
+          <div class="chead">
+            <span class="pill p-paused">Paused · date TBD</span>
+            <div class="v">v1.5</div>
+            <div class="when">The full merged experience</div>
+          </div>
+          <div class="cbody">
+            <div class="k">Members get</div>
+            <ul>
+              <li>Society tracks <b>inside</b> the app: Personal Insights → Career Clarity → Career Readiness</li>
+              <li>New onboarding (16 screens)</li>
+              <li>Updated brand colors</li>
+              <li>Stretch: Coach chat, Community teaser</li>
+            </ul>
+          </div>
+          <div class="mkt"><div class="k">Marketing owns — long lead 📅</div>Track intro/outro content, onboarding copy, launch campaign. We’ll lock lead time as soon as the date firms up.</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node n-future"></div>
+        <div class="card">
+          <div class="chead">
+            <span class="pill p-future">Future</span>
+            <div class="v">v2</div>
+            <div class="when">Undated</div>
+          </div>
+          <div class="cbody">
+            <div class="k">Members get</div>
+            <ul>
+              <li>Fully native Society experience built on a Society API — fastest, most seamless version of the merge</li>
+            </ul>
+          </div>
+          <div class="mkt none"><div class="k">Marketing owns</div>TBD — we’ll shape it together.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="process">
+    <h2>How design &amp; content requests flow</h2>
+    <div class="pgrid">
+      <div><div class="ic">🗓️</div><b>Planned by default.</b> Requests tied to a release go on a shared timeline with the dev sprint schedule — no surprises, nothing cut for time.</div>
+      <div><div class="ic">⚡</div><b>Ad-hoc lane exists.</b> Content materials sometimes can’t wait for a planning cycle — flag them as ad-hoc and we triage together in this sync. Exception, not the default.</div>
+      <div><div class="ic">🤝</div><b>This sync is the venue.</b> Planned items get slotted, ad-hoc items get triaged, and the timeline above stays current.</div>
+    </div>
+  </div>
+
+  <div class="ask">
+    <b>❓ Question for the group:</b> what lead time does the team realistically need for release-tied content
+    (e.g., the v1.5 launch campaign)? That number becomes the anchor for the request timeline.
+  </div>
+
+  <div class="foot">
+    <b>Why v1.1 before v1.5:</b> Apple required account deletion + upsell changes. Rather than risk the big v1.5 bundle in review,
+    we ship a small compliant update that still opens the Society door — members get access now instead of waiting.
+    <br/><b>Status key:</b> teal = shipped · gold = in flight · gray = paused · outline = future.
+    Owner: Angelica Evans (Product). Sources: Jul 17 App Sync, Jul 20 Project Review, NIA roadmap.
+  </div>
+</div>
+</body>
+</html>

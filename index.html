@@ -44,7 +44,7 @@
   .hint{text-align:center;font-size:12.5px;color:var(--muted);font-weight:600;margin:0 0 16px;}
   .spine{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
   .spine::before{content:"";position:absolute;left:2%;right:2%;top:9px;height:4px;border-radius:2px;
-    background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 44%,#c8d0de 44%,#c8d0de 100%);}
+    background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 72%,#c8d0de 72%,#c8d0de 100%);}
   .stage{position:relative;padding-top:30px;cursor:pointer;border:0;background:none;text-align:left;
     font-family:inherit;color:inherit;}
   .node{position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;
@@ -104,7 +104,7 @@
   @media (max-width:900px){
     .spine{grid-template-columns:1fr;gap:12px;}
     .spine::before{left:14px;right:auto;top:2%;bottom:2%;width:4px;height:auto;
-      background:linear-gradient(180deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 44%,#c8d0de 44%,#c8d0de 100%);}
+      background:linear-gradient(180deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 72%,#c8d0de 72%,#c8d0de 100%);}
     .stage{padding-top:0;padding-left:40px;}
     .node{left:14px;top:14px;transform:translateX(-40%);}
     .pgrid{grid-template-columns:1fr;}
@@ -153,8 +153,8 @@
   <div class="ask">
     <b>❓ Question for the group:</b> what lead time does the team realistically need for release-tied content
     (e.g., the v1.5 launch campaign)? That number becomes the anchor for the request timeline.
-    <br/><b>✍️ And one thing we can start now:</b> customized Society banner copy for each Members Area entry point
-    (post-induction, Orientation, LTD, SNTs) — v1.5 is paused, so this is pressure-free runway.
+    <br/><b>✍️ And one thing to start now:</b> customized Society banner copy for each Members Area entry point
+    (post-induction, Orientation, LTD, SNTs) — with v1.5 targeting mid-August, this is the first deadline.
   </div>
 
   <div class="foot">
@@ -183,12 +183,12 @@ const stages=[
   mkt:{quiet:false, k:'Marketing owns — the near-term ask ⭐', items:['<b>Final CTA copy sign-off</b> for the Society card — dev is building it this week, so this is the one thing we’d love locked at this sync','Heads-up: any materials pointing to in-app program purchases should point to nsls.org going forward']},
  },
  {
-  id:'v15', node:'n-paused', pill:'p-paused', ptxt:'Paused · date TBD', v:'v1.5', when:'The big one',
+  id:'v15', node:'n-live', pill:'p-live', ptxt:'Targeting mid-Aug', v:'v1.5', when:'The big one · targeting mid-August',
   one:'Society moves in — tracks living fully inside the app.',
-  head:'v1.5 — Society moves in', hwhen:'Paused while we time it right · new date TBD · paused, not canceled',
+  head:'v1.5 — Society moves in', hwhen:'The big release · new target: mid-August',
   get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','<b>Society entry points across the Members Area</b> — a banner at the bottom of Orientation, LTD, SNTs, and post-induction pages, each customized to where the member is in their journey','A fresh coat of paint — updated brand colors throughout'],
   explore:['Coach chat and a Community sneak peek — only if time allows'],
-  mkt:{quiet:false, k:'Marketing owns — start now, long lead 📅', items:['<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey; can start now, while the release is paused','Track intro/outro content and onboarding copy','The launch campaign, once the date firms up — planned, not rushed']},
+  mkt:{quiet:false, k:'Marketing owns — mid-August is close, start now 📅', items:['<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey','Track intro/outro content and onboarding copy','The launch campaign — with a mid-August target, the content timeline needs locking at this sync']},
  },
  {
   id:'v2', node:'n-future', pill:'p-future', ptxt:'Future', v:'v2', when:'Down the road',

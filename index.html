@@ -80,6 +80,51 @@
   .dbody li{margin:5px 0;}
   .dbody ul.explore{color:var(--muted);font-size:13.5px;}
   .dbody ul.explore li::marker{color:#c8d0de;}
+  /* device mockups — explicit desktop vs app */
+  .shots{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start;margin:4px 0 20px;}
+  .shot{text-align:center;}
+  .devlbl{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:8px;}
+  .cap{font-size:12px;line-height:1.4;color:var(--muted);margin-top:8px;font-weight:600;max-width:360px;}
+  .phone{width:170px;aspect-ratio:44/95;border-radius:20px;border:5px solid var(--navy);overflow:hidden;
+    background:#fff;box-shadow:0 8px 22px rgba(20,35,59,.18);margin:0 auto;}
+  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+  .laptop{width:380px;max-width:100%;margin:0 auto;}
+  .lap-screen{border:6px solid #1a2436;border-bottom-width:10px;border-radius:10px 10px 0 0;overflow:hidden;
+    background:#fff;aspect-ratio:16/10;box-shadow:0 8px 22px rgba(20,35,59,.18);}
+  .lap-base{height:9px;background:linear-gradient(#d7dde6,#aab4c4);border-radius:0 0 12px 12px;width:112%;margin:0 -6%;}
+  .brw{height:100%;display:flex;flex-direction:column;font-size:8px;text-align:left;}
+  .brw-bar{flex:0 0 auto;display:flex;align-items:center;gap:4px;background:#e8ebf1;padding:4px 6px;}
+  .brw-bar i{width:6px;height:6px;border-radius:50%;background:#c3cbd8;}
+  .brw-url{background:#fff;border-radius:8px;padding:2px 8px;color:#8a93a8;font-weight:600;font-size:7px;}
+  .brw-page{flex:1;display:flex;background:#f4f4f2;min-height:0;}
+  .brw-side{flex:0 0 19%;background:#2b3a52;color:#c7d1e0;font-weight:700;font-size:6.5px;
+    display:flex;flex-direction:column;gap:4px;padding:7px 6px;}
+  .brw-side .on{color:#fff;background:#3d4f6d;border-radius:3px;padding:2px 4px;margin:0 -2px;}
+  .brw-main{flex:1;display:flex;flex-direction:column;gap:5px;padding:7px;min-height:0;}
+  .brw-block{background:#fff;border-radius:4px;padding:5px;color:#9aa3b5;box-shadow:0 1px 2px rgba(0,0,0,.06);}
+  .brw-block .t{font-weight:800;color:#6b7890;letter-spacing:.05em;font-size:6.5px;}
+  .brw-lines i{display:block;height:3px;border-radius:2px;background:#e7e9ee;margin-top:3px;}
+  .brw-lines i:last-child{width:60%;}
+  .soc-banner{margin-top:auto;background:#faf7f0;border:2px solid var(--gold);border-radius:5px;
+    box-shadow:0 3px 10px rgba(224,161,0,.35);display:flex;align-items:center;gap:5px;padding:5px;color:#444;}
+  .soc-art{flex:0 0 24px;height:28px;border-radius:3px;background:linear-gradient(140deg,#e8b4a0 0%,#5f4b8b 55%,#2a9d8f 100%);}
+  .soc-banner .lg{display:inline-block;background:#f5d547;color:#1a1a1a;font-weight:900;border-radius:2px;padding:0 2px;font-family:Georgia,serif;font-size:7px;}
+  .soc-banner .tt{font-weight:800;color:#1a1a1a;font-size:7px;font-family:Georgia,serif;}
+  .soc-banner .sub2{font-size:6px;color:#6b7890;margin-top:2px;}
+  .soc-btn{margin-left:auto;flex:0 0 auto;background:#1a1a1a;color:#fff;font-weight:800;font-size:5.5px;border-radius:2px;padding:3px 5px;}
+  .m-mock{width:100%;height:100%;background:#faf7f0;display:flex;flex-direction:column;font-size:9px;text-align:left;}
+  .m-top{background:#f5d547;padding:10px 9px 8px;}
+  .m-brand{font-weight:800;font-size:11px;color:#1a1a1a;font-family:Georgia,serif;}
+  .m-hi{font-family:Georgia,serif;font-size:11px;color:#1a1a1a;margin-top:6px;font-weight:700;}
+  .m-body{padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .m-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:6px;
+    padding:6px 7px;color:#1a1a1a;font-weight:700;font-size:8.5px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .m-ok{color:#137165;} .m-lock{color:#9aa3b5;}
+  .m-card{background:#fff;border-radius:6px;padding:7px;color:#444;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .m-card .t{font-weight:700;color:#1a1a1a;font-size:8.5px;}
+  .m-bar{height:4px;border-radius:2px;background:#e8e2d4;margin-top:4px;overflow:hidden;}
+  .m-bar i{display:block;height:100%;width:45%;background:var(--teal);}
+  .m-btn{display:inline-block;background:#f6c445;color:#1a1a1a;font-weight:800;border-radius:99px;padding:2px 7px;margin-top:5px;font-size:8px;}
   .mkt{background:var(--gold-soft);border:1px solid #f3ddad;border-radius:10px;padding:12px 16px;font-size:13.5px;line-height:1.55;}
   .mkt .k{color:#8a6300;margin-bottom:5px;}
   .mkt ul{margin:0;padding-left:19px;font-size:13.5px;}
@@ -145,12 +190,53 @@
 </div>
 
 <script>
+const LAPTOP = (side, blocks, banner) => `
+  <div class="laptop"><div class="lap-screen"><div class="brw">
+    <div class="brw-bar"><i></i><i></i><i></i><span class="brw-url">members.nsls.org</span></div>
+    <div class="brw-page">
+      <div class="brw-side">${side}</div>
+      <div class="brw-main">${blocks}${banner}</div>
+    </div>
+  </div></div><div class="lap-base"></div></div>`;
+
+const SOC_BANNER = sub => `
+  <div class="soc-banner"><div class="soc-art"></div>
+    <div><span class="lg">S.</span> <span class="tt">Society</span> · Career. Coaching. Clarity.
+      <div class="sub2">${sub}</div></div>
+    <div class="soc-btn">EXPLORE SOCIETY</div>
+  </div>`;
+
+const DESK_DASH = LAPTOP(
+  `<span class="on">Dashboard</span><span>Courses</span><span>Events</span><span>Benefits</span><span>Community</span>`,
+  `<div class="brw-block brw-lines"><span class="t">MEMBERS AREA DASHBOARD</span><i></i><i></i></div>
+   <div class="brw-block brw-lines"><span class="t">CURRENT PROGRAM · FOL</span><i></i><i></i></div>`,
+  SOC_BANNER('One click in — already signed in'));
+
+const DESK_PAGES = LAPTOP(
+  `<span>Courses</span><span class="on">Orientation</span><span>LTD</span><span>SNTs</span><span>Induction</span>`,
+  `<div class="brw-block brw-lines"><span class="t">ORIENTATION</span><i></i><i></i></div>
+   <div class="brw-block brw-lines"><span class="t">CONGRATULATIONS!</span><i></i><i></i></div>`,
+  SOC_BANNER('✍️ copy customized per page — Marketing'));
+
+const APP_TRACKS = `
+  <div class="m-mock">
+    <div class="m-top"><div class="m-brand">Society</div><div class="m-hi">Your tracks</div></div>
+    <div class="m-body">
+      <div class="m-row"><span>Personal Insights</span><span class="m-ok">✓ Done</span></div>
+      <div class="m-card"><div class="t">Career Clarity</div><div class="m-bar"><i></i></div><span class="m-btn">Continue →</span></div>
+      <div class="m-row"><span>Career Readiness</span><span class="m-lock">🔒 Up next</span></div>
+    </div>
+  </div>`;
+
 const stages=[
  {
   id:'v1', node:'n-done', pill:'p-done', ptxt:'Shipped', v:'v1', when:'Live since Jul 12',
   one:'All of FOL/Core — with a new face and look.',
   head:'v1 — all of FOL/Core, with a new face and look', hwhen:'Live since July 12',
   get:['Everything FOL/Core offers today — carried over in full','A brand-new face and look for the whole experience','No Society content yet — that’s what the next steps add'],
+  shots:[
+    {dev:'📱 In the app', img:'screen-home.png', cap:'The refreshed home — the new face and look (current app)'},
+  ],
   mkt:{quiet:true, k:'Marketing owns', items:['Done — thank you! 💛']},
  },
  {
@@ -159,6 +245,10 @@ const stages=[
   head:'v1.1 — the door to Society opens, both ways', hwhen:'Submitted to Apple July 20 · dev finishing the pieces this week · goes live as soon as it’s approved by the App Store',
   get:['<b>Society entry point on the Members Area dashboard — on desktop and in the app</b> — an “Explore Society” card every member sees; one tap in, already signed in','<b>A button back to Core</b> — members return to the Members Area just as easily, so the door swings both ways (no dead ends)','Account deletion in-app, with a 30-day change-of-mind window (an Apple requirement)','<b>Users won’t be able to purchase products within the app</b> — program purchases happen on nsls.org instead'],
   explore:['A Society spot in the Member Benefits list for a second doorway'],
+  shots:[
+    {dev:'💻 On desktop', html:DESK_DASH, cap:'Members Area dashboard — Society banner with “Explore Society” (illustrative; placement per current build)'},
+    {dev:'📱 In the app', img:'fig-home-society.png', cap:'Members Area dashboard — Society card (design preview from Figma)'},
+  ],
   mkt:{quiet:false, k:'Marketing owns — the near-term ask ⭐', items:['<b>Final CTA copy sign-off</b> for the Society card — dev is building it this week, so this is the one thing we’d love locked at this sync','Heads-up: any materials pointing to in-app program purchases should point to nsls.org going forward']},
  },
  {
@@ -167,6 +257,10 @@ const stages=[
   head:'v1.5 — Society moves in', hwhen:'The big release · new target: mid-August',
   get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','<b>Society entry points across the Members Area</b> — a banner at the bottom of Orientation, LTD, SNTs, and post-induction pages, each customized to where the member is in their journey','A fresh coat of paint — updated brand colors throughout'],
   explore:['Coach chat and a Community sneak peek — only if time allows'],
+  shots:[
+    {dev:'💻 On desktop', html:DESK_PAGES, cap:'Bottom of each journey page — Orientation, LTD, SNTs, post-induction — with copy customized per page (illustrative)'},
+    {dev:'📱 In the app', html:APP_TRACKS, cap:'Society tracks living fully inside the app (illustrative)'},
+  ],
   mkt:{quiet:false, k:'Marketing owns — mid-August is close, start now 📅', items:['<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey','Track intro/outro content and onboarding copy','The launch campaign — with a mid-August target, the content timeline needs locking at this sync']},
  },
  {
@@ -202,6 +296,11 @@ function render(i){
       <ul>${s.get.map(g=>`<li>${g}</li>`).join('')}</ul>
       ${s.explore?`<p class="k">Being explored — not committed</p>
       <ul class="explore">${s.explore.map(e=>`<li>${e}</li>`).join('')}</ul>`:''}
+      ${s.shots?`<p class="k">Where it lives</p>
+      <div class="shots">${s.shots.map(sh=>
+        `<div class="shot"><div class="devlbl">${sh.dev}</div>
+         <div class="${sh.dev.includes('desktop')?'':'phone'}">${sh.img?`<img src="assets/${sh.img}" alt=""/>`:sh.html}</div>
+         <div class="cap">${sh.cap}</div></div>`).join('')}</div>`:''}
       <div class="mkt${s.mkt.quiet?' quiet':''}"><p class="k">${s.mkt.k}</p>
         <ul>${s.mkt.items.map(m=>`<li>${m}</li>`).join('')}</ul>
       </div>

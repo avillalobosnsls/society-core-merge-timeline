@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Core + Society — Technical Timeline</title>
+<style>
+  :root{
+    --navy:#0d2240; --ink:#1f2a44; --muted:#6b7890; --line:#e6e9f0;
+    --gold:#e0a100; --gold-bright:#f6c445; --gold-soft:#fff3d6; --teal:#2a9d8f; --teal-soft:#e2f3f1;
+    --blue-soft:#e8eefb; --band:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef1f6;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1100px;margin:28px auto;background:#fff;border-radius:14px;
+    box-shadow:0 8px 30px rgba(20,35,59,.10);overflow:hidden;}
+  header{background:linear-gradient(120deg,var(--navy) 0%,#1b3358 100%);color:#fff;padding:30px 34px 22px;position:relative;}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 55%,var(--teal) 100%);}
+  .brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold-bright);margin-bottom:12px;}
+  .brand .x{color:#8fa3c2;font-weight:600;letter-spacing:0;text-transform:none;}
+  h1{margin:0;font-size:28px;letter-spacing:-.02em;line-height:1.12;}
+  h1 .g{color:var(--gold-bright);}
+  .sub{margin:10px 0 0;color:#c2cfe4;font-size:14px;max-width:840px;line-height:1.5;}
+  .tabs{display:flex;gap:8px;margin-top:16px;}
+  .tabs a{color:#c2cfe4;text-decoration:none;font-size:12.5px;font-weight:700;padding:6px 14px;
+    border-radius:999px;border:1px solid rgba(255,255,255,.22);}
+  .tabs a:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+  .tabs a.on{background:var(--gold-bright);color:#1a1a1a;border-color:var(--gold-bright);}
+  .cap{margin:24px 34px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:#fff;box-shadow:0 4px 18px rgba(20,35,59,.07);}
+  .cap:last-of-type{margin-bottom:28px;}
+  .dhead{padding:15px 26px 12px;border-bottom:1px solid var(--line);background:var(--band);
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .dhead h2{margin:0;font-size:18px;color:var(--navy);letter-spacing:-.01em;flex:1;}
+  .nb{font-size:12px;font-weight:800;color:var(--muted);white-space:nowrap;}
+  .st{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    border-radius:999px;padding:3px 10px;white-space:nowrap;}
+  .st-done{background:var(--teal-soft);color:#137165;}
+  .st-flight{background:var(--gold-soft);color:#8a6300;}
+  .st-open{background:var(--blue-soft);color:#2a55ab;}
+  .dbody{padding:14px 26px 18px;display:grid;grid-template-columns:1fr 1fr;gap:4px 34px;}
+  .k{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:8px 0 5px;}
+  .dbody ul{margin:0;padding-left:19px;font-size:13.5px;line-height:1.6;}
+  .dbody li{margin:4px 0;}
+  .why{grid-column:1/-1;font-size:13.5px;line-height:1.55;margin:0;color:var(--ink);}
+  .why b{color:var(--navy);}
+  .own{font-weight:800;color:var(--navy);}
+  .qs li::marker{content:"❓ ";}
+  .lede{margin:24px 34px 0;background:var(--blue-soft);border:1px solid #cddafa;border-radius:12px;
+    padding:13px 20px;font-size:13.5px;line-height:1.55;}
+  .lede b{color:#2a55ab;}
+  .foot{padding:18px 34px 24px;color:var(--muted);font-size:12px;line-height:1.6;
+    border-top:1px solid var(--line);background:var(--band);}
+  .foot b{color:var(--ink);}
+  @media (max-width:800px){.dbody{grid-template-columns:1fr;} h1{font-size:23px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">NSLS <span class="x">✕</span> The Society <span class="x">· Members App</span></div>
+    <h1>Technical timeline — <span class="g">the plumbing</span></h1>
+    <p class="sub">The capabilities that have to be true under the hood for the merge to work:
+      identity, lifecycle, visibility, data, and admin control — each with where it stands,
+      when it's needed, and what's still to define.</p>
+    <nav class="tabs">
+      <a href="index.html">Overview</a>
+      <a href="phases.html">Phases</a>
+      <a href="technical.html" class="on">Technical</a>
+    </nav>
+  </header>
+
+  <div class="lede"><b>How to read this page:</b> ✅ = built and live · ⏳ = in flight with an owner ·
+    ❓ = an open question that needs a decision and a design before its "needed by" release.
+    The ❓ items are the ones to pressure-test with Dev.</div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-done">✅ Live</span><h2>One login / identity</h2><span class="nb">Needed by: v1.1 · in place since June</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> every doorway in the merge assumes one account — a member crossing from Core to Society (or back) must stay signed in, on every surface.</p>
+      <div>
+        <p class="k">Where it stands</p>
+        <ul>
+          <li>Centralized auth live across Core, Society, and the app since June</li>
+          <li>Session continuity works app ↔ web — validated before v1 shipped</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Watch items</p>
+        <ul>
+          <li>Auth context through edge flows (e.g., password reset mid-journey) — fixes shipped with the July auth release</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-flight">⏳ In flight</span><h2>Account lifecycle</h2><span class="nb">Needed by: v1.1</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> when a member deletes or disables their account, every connected system — Core, Society, downstream data — has to hear about it and act.</p>
+      <div>
+        <p class="k">Where it stands</p>
+        <ul>
+          <li>In-app account deletion released, with a 30-day change-of-mind window</li>
+          <li>Deleting the account revokes access to all connected apps</li>
+          <li>Lifecycle webhook (disable/delete events) is live</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Still to do</p>
+        <ul>
+          <li>Downstream systems register to receive lifecycle events and mark records accordingly <span class="own">(Dev)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-open">❓ To define</span><h2>Login &amp; access visibility</h2><span class="nb">Needed by: v1.1 launch</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> the moment the Society door opens we'll want to know it's working — who logged in, who tapped Explore Society, from which surface, and whether they came back.</p>
+      <div>
+        <p class="k">Open questions</p>
+        <ul class="qs">
+          <li>Which events do we capture — logins, entry-point taps, Society sessions, return visits?</li>
+          <li>Where does the event data land, and who can query it?</li>
+          <li>Do we need this instrumented before the v1.1 release, or can it follow fast?</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Owner</p>
+        <ul><li><span class="own">Dev + Product</span> — define the event set; Product confirms what questions it must answer</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-open">❓ To define</span><h2>Masquerade / impersonation</h2><span class="nb">Needed by: v1.5</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> support and admins troubleshoot by seeing what the member sees. Once Core and Society share one account, masquerade either works across both — or support goes blind on half the experience.</p>
+      <div>
+        <p class="k">Open questions</p>
+        <ul class="qs">
+          <li>Will masquerade carry across Core and Society under one login?</li>
+          <li>Who is allowed to masquerade, and is every use logged/audited?</li>
+          <li>What does the member-facing record show after a support session?</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Owner</p>
+        <ul><li><span class="own">Dev + Product</span> — needs a decision and a design before v1.5 support load arrives</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-flight">⏳ In flight</span><h2>Data mapping</h2><span class="nb">Needed by: v1.5</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> one member, one record — Core member data, Society profiles and track progress, and the System of Record have to agree on who's who, or metrics and reporting can't be trusted.</p>
+      <div>
+        <p class="k">Where it stands</p>
+        <ul>
+          <li>Member data migration into the System of Record is underway</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Still to define</p>
+        <ul class="qs">
+          <li>How Society track/profile data maps back to the member record</li>
+          <li>Which system is the source of truth for each field once the merge is live</li>
+        </ul>
+        <p class="k">Owner</p>
+        <ul><li><span class="own">Dev</span></li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-open">❓ To define</span><h2>Metrics &amp; reports</h2><span class="nb">Needed by: v1.5 launch</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> the launch campaign needs to be measurable from day one — and leadership will ask how the merge is doing in week one, not month three.</p>
+      <div>
+        <p class="k">Open questions</p>
+        <ul class="qs">
+          <li>The metric set — entry-point taps, track starts, track completions, return rate?</li>
+          <li>Where reports live and who owns the dashboard</li>
+          <li>Campaign attribution — can Marketing see which content drove entries?</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Owner</p>
+        <ul><li><span class="own">Product + Marketing</span> — define the questions; <span class="own">Dev</span> wires the data</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap">
+    <div class="dhead"><span class="st st-open">❓ To define</span><h2>Admin access</h2><span class="nb">Needed by: v1.5</span></div>
+    <div class="dbody">
+      <p class="why"><b>Why it matters:</b> once one account spans both systems, "who can see and manage what" has to be answered once, coherently — not per system.</p>
+      <div>
+        <p class="k">Open questions</p>
+        <ul class="qs">
+          <li>Which roles exist across Core + Society, and what can each see or change?</li>
+          <li>How do chapter-level roles (advisors, leaders) map onto Society content?</li>
+          <li>Is admin activity across member data audited in one place?</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Owner</p>
+        <ul><li><span class="own">Dev + Product</span></li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>Status sources:</b> ✅/⏳ items are grounded in the July project reviews (auth, deletion + lifecycle webhook, SoR migration);
+    ❓ items are open questions framed by Product for Dev to confirm — not committed plans.
+    Owner: Angelica Evans (Product). Updated Jul 21, 2026.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Core + Society — Merge Phases</title>
+<style>
+  :root{
+    --navy:#0d2240; --ink:#1f2a44; --muted:#6b7890; --line:#e6e9f0;
+    --gold:#e0a100; --gold-bright:#f6c445; --gold-soft:#fff3d6; --teal:#2a9d8f; --teal-soft:#e2f3f1;
+    --blue-soft:#e8eefb; --paused:#8a93a8; --band:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef1f6;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1100px;margin:28px auto;background:#fff;border-radius:14px;
+    box-shadow:0 8px 30px rgba(20,35,59,.10);overflow:hidden;}
+  header{background:linear-gradient(120deg,var(--navy) 0%,#1b3358 100%);color:#fff;padding:30px 34px 22px;position:relative;}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 55%,var(--teal) 100%);}
+  .brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold-bright);margin-bottom:12px;}
+  .brand .x{color:#8fa3c2;font-weight:600;letter-spacing:0;text-transform:none;}
+  h1{margin:0;font-size:28px;letter-spacing:-.02em;line-height:1.12;}
+  h1 .g{color:var(--gold-bright);}
+  .sub{margin:10px 0 0;color:#c2cfe4;font-size:14px;max-width:840px;line-height:1.5;}
+  .tabs{display:flex;gap:8px;margin-top:16px;}
+  .tabs a{color:#c2cfe4;text-decoration:none;font-size:12.5px;font-weight:700;padding:6px 14px;
+    border-radius:999px;border:1px solid rgba(255,255,255,.22);}
+  .tabs a:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+  .tabs a.on{background:var(--gold-bright);color:#1a1a1a;border-color:var(--gold-bright);}
+  .phase{margin:24px 34px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:#fff;box-shadow:0 4px 18px rgba(20,35,59,.07);}
+  .phase:last-of-type{margin-bottom:28px;}
+  .dhead{padding:16px 26px 13px;border-bottom:1px solid var(--line);background:var(--band);
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .dhead h2{margin:0;font-size:19px;color:var(--navy);letter-spacing:-.01em;}
+  .dhead .hwhen{margin:0;font-size:13px;font-weight:700;color:var(--muted);}
+  .pill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    border-radius:999px;padding:3px 10px;}
+  .p-done{background:var(--teal-soft);color:#137165;}
+  .p-live{background:var(--gold-soft);color:#8a6300;}
+  .p-future{background:#f2f4f8;color:#8a93a8;}
+  .dbody{padding:16px 26px 20px;display:grid;grid-template-columns:1fr 1fr;gap:6px 34px;}
+  .k{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:10px 0 6px;}
+  .dbody ul,.dbody ol{margin:0;padding-left:19px;font-size:13.5px;line-height:1.6;}
+  .dbody li{margin:4px 0;}
+  .goal{grid-column:1/-1;font-size:14px;line-height:1.55;margin:0;padding:10px 14px;background:var(--band);
+    border-radius:10px;border:1px solid var(--line);}
+  .goal b{color:var(--navy);}
+  .own{font-weight:800;color:var(--navy);}
+  .st{font-weight:700;}
+  .st.ok{color:#137165;} .st.now{color:#8a6300;} .st.next{color:var(--muted);}
+  .gate li::marker{content:"🚧 ";}
+  .foot{padding:18px 34px 24px;color:var(--muted);font-size:12px;line-height:1.6;
+    border-top:1px solid var(--line);background:var(--band);}
+  .foot b{color:var(--ink);}
+  @media (max-width:800px){.dbody{grid-template-columns:1fr;} h1{font-size:23px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">NSLS <span class="x">✕</span> The Society <span class="x">· Members App</span></div>
+    <h1>Merge phases — <span class="g">how we get there</span></h1>
+    <p class="sub">The same releases as the overview, laid out as phases: the goal of each, what ships,
+      the sequence of steps, and the gates that decide when it moves.</p>
+    <nav class="tabs">
+      <a href="index.html">Overview</a>
+      <a href="phases.html" class="on">Phases</a>
+      <a href="technical.html">Technical</a>
+    </nav>
+  </header>
+
+  <div class="phase">
+    <div class="dhead"><span class="pill p-done">✅ Complete</span><h2>Phase 0 — Foundation</h2><p class="hwhen">June 2026</p></div>
+    <div class="dbody">
+      <p class="goal"><b>Goal:</b> one NSLS account everywhere, so Core and Society can ever be one experience.</p>
+      <div>
+        <p class="k">What shipped</p>
+        <ul>
+          <li>Centralized login live across Core, Society, and the app <span class="st ok">— done</span></li>
+          <li>Session continuity — crossing between Core and Society keeps you signed in <span class="st ok">— done</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Why it mattered</p>
+        <ul>
+          <li>Every later phase assumes one identity — without it, every doorway would mean a second login</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="dhead"><span class="pill p-done">✅ Complete</span><h2>Phase 1 — v1 · the new face</h2><p class="hwhen">Live July 12</p></div>
+    <div class="dbody">
+      <p class="goal"><b>Goal:</b> rebuild the members experience on the new foundation — everything FOL/Core offers, with a new face and look.</p>
+      <div>
+        <p class="k">What shipped</p>
+        <ul>
+          <li>All of FOL/Core, carried over in full <span class="st ok">— done</span></li>
+          <li>New face and look across the experience <span class="st ok">— done</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">Scope note</p>
+        <ul>
+          <li>No Society content in this phase — deliberately; the doorways come next</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="dhead"><span class="pill p-live">⏳ In flight</span><h2>Phase 2 — v1.1 · the doorways</h2><p class="hwhen">Live as soon as approved by the App Store</p></div>
+    <div class="dbody">
+      <p class="goal"><b>Goal:</b> open the door between Core and Society — both ways — without waiting for the big build.</p>
+      <div>
+        <p class="k">Sequence</p>
+        <ol>
+          <li>Account deletion built &amp; released in auth <span class="st ok">— done</span></li>
+          <li>Submitted to Apple — July 20 <span class="st ok">— done</span></li>
+          <li>Society card + back-to-Core button build <span class="own">(Dev)</span> <span class="st now">— this week</span></li>
+          <li>Final CTA copy sign-off <span class="own">(Marketing)</span> <span class="st now">— this sync</span></li>
+          <li>Release on approval <span class="st next">— waiting on Apple</span></li>
+        </ol>
+      </div>
+      <div>
+        <p class="k">Gates</p>
+        <ul class="gate">
+          <li>App Store review — external, timing is Apple's</li>
+          <li>CTA copy locked before the card build ships</li>
+        </ul>
+        <p class="k">What ships</p>
+        <ul>
+          <li>Society entry point on the Members Area dashboard — desktop and app</li>
+          <li>Button back to Core — no dead ends</li>
+          <li>No in-app product purchases — purchases happen on nsls.org</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="dhead"><span class="pill p-live">🎯 Targeting mid-August</span><h2>Phase 3 — v1.5 · Society moves in</h2><p class="hwhen">The big release</p></div>
+    <div class="dbody">
+      <p class="goal"><b>Goal:</b> Society stops being a place you visit and becomes part of the app — tracks, onboarding, and journey-aware doorways everywhere.</p>
+      <div>
+        <p class="k">Sequence</p>
+        <ol>
+          <li>Target reset to mid-August <span class="st ok">— done</span></li>
+          <li>Entry-point banner copy per page <span class="own">(Marketing)</span> <span class="st now">— start now, first deadline</span></li>
+          <li>Tracks + onboarding build <span class="own">(Dev)</span> <span class="st now">— in progress</span></li>
+          <li>Entry-point banners on Orientation / LTD / SNTs / post-induction <span class="own">(Dev)</span> <span class="st next">— with builds</span></li>
+          <li>Track intro/outro + onboarding copy <span class="own">(Marketing)</span> <span class="st next">— on the content timeline</span></li>
+          <li>Launch campaign <span class="own">(Marketing)</span> <span class="st next">— timeline locks at this sync</span></li>
+        </ol>
+      </div>
+      <div>
+        <p class="k">Gates</p>
+        <ul class="gate">
+          <li>Content readiness — banners, track copy, campaign (lead time is the question for the group)</li>
+          <li>App Store review for the app release</li>
+          <li>Technical to-defines that land here: access metrics, masquerade, admin access (see the Technical page)</li>
+        </ul>
+        <p class="k">What ships</p>
+        <ul>
+          <li>Personal Insights → Career Clarity → Career Readiness, fully in-app</li>
+          <li>New welcome + onboarding, updated brand colors</li>
+          <li>Customized Society banners across the Members Area journey pages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="dhead"><span class="pill p-future">Future</span><h2>Phase 4 — v2 · no seams</h2><p class="hwhen">Not yet scheduled</p></div>
+    <div class="dbody">
+      <p class="goal"><b>Goal:</b> everything Society offers built natively into the app — no lines between Core and Society at all.</p>
+      <div>
+        <p class="k">What it takes</p>
+        <ul>
+          <li>Society exposes a native API for its content</li>
+          <li>App rebuilds Society surfaces natively on that API</li>
+        </ul>
+      </div>
+      <div>
+        <p class="k">When it gets real</p>
+        <ul>
+          <li>Scope and timing picked up after v1.5 lands</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>Reading it:</b> each phase gates the next — the foundation made v1 possible, v1.1 opens the doors, v1.5 moves Society in, v2 removes the seams.
+    Owner: Angelica Evans (Product). Updated Jul 21, 2026.
+  </div>
+</div>
+</body>
+</html>

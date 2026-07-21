@@ -31,6 +31,13 @@
   .stamp{margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);
     border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 14px;font-size:12.5px;color:#dbe4f2;font-weight:600;}
   .stamp .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
+  .tabs{display:flex;gap:8px;margin-top:14px;}
+  .tabs a{color:#c2cfe4;text-decoration:none;font-size:12.5px;font-weight:700;padding:6px 14px;
+    border-radius:999px;border:1px solid rgba(255,255,255,.22);}
+  .tabs a:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+  .tabs a.on{background:var(--gold-bright);color:#1a1a1a;border-color:var(--gold-bright);}
+  .more{display:block;padding:10px 14px 12px;font-size:12.5px;font-weight:700;color:#2a55ab;text-decoration:none;background:var(--band);border-top:1px solid var(--line);}
+  .more:hover{text-decoration:underline;}
 
   /* foundation ribbon */
   .foundation{display:flex;align-items:center;gap:14px;background:var(--teal-soft);
@@ -194,6 +201,11 @@
       <b>what members will get</b>, and <b>what Marketing owns</b> —
       so content and campaigns can be planned right alongside the builds.</p>
     <span class="stamp"><span class="dot"></span>Updated Jul 21, 2026 · for the Marketing Sync</span>
+    <nav class="tabs">
+      <a href="index.html" class="on">Overview</a>
+      <a href="phases.html">Phases</a>
+      <a href="technical.html">Technical</a>
+    </nav>
   </header>
 
   <div class="foundation">
@@ -256,6 +268,7 @@
         </tbody>
       </table>
     </div>
+    <a class="more" href="technical.html">Full technical breakdown — why each matters + the open questions →</a>
   </div>
 
   <div class="ask">

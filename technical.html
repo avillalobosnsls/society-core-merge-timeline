@@ -138,9 +138,13 @@
   </div>
 
   <div class="cap">
-    <div class="dhead"><span class="st st-open">❓ To define</span><h2>Masquerade / impersonation</h2><span class="nb">Needed by: v1.5</span></div>
+    <div class="dhead"><span class="st st-open">❓ TBD</span><h2>Masquerade / impersonation</h2><span class="nb">Needed by: TBD</span></div>
     <div class="dbody">
       <p class="why"><b>Why it matters:</b> support and admins troubleshoot by seeing what the member sees. Once Core and Society share one account, masquerade either works across both — or support goes blind on half the experience.</p>
+      <div>
+        <p class="k">Status</p>
+        <ul><li>TBD — not yet scoped or scheduled; open questions below need answers before it lands anywhere on the timeline</li></ul>
+      </div>
       <div>
         <p class="k">Open questions</p>
         <ul class="qs">
@@ -149,21 +153,25 @@
           <li>What does the member-facing record show after a support session?</li>
         </ul>
       </div>
-      <div>
-        <p class="k">Owner</p>
-        <ul><li><span class="own">Dev + Product</span> — needs a decision and a design before v1.5 support load arrives</li></ul>
-      </div>
     </div>
   </div>
 
   <div class="cap">
-    <div class="dhead"><span class="st st-flight">⏳ In flight</span><h2>Data mapping</h2><span class="nb">Needed by: v1.5</span></div>
+    <div class="dhead"><span class="st st-flight">⏳ In flight</span><h2>Data mapping — System of Record as source of truth</h2><span class="nb">Needed by: v1.5</span></div>
     <div class="dbody">
-      <p class="why"><b>Why it matters:</b> one member, one record — Core member data, Society profiles and track progress, and the System of Record have to agree on who's who, or metrics and reporting can't be trusted.</p>
+      <p class="why"><b>Why it matters:</b> the System of Record has to tie to both Core and Society so it can be the source of truth — one member, one record. If the three don't agree on who's who, metrics, reports, and downstream data can't be trusted.</p>
       <div>
         <p class="k">Where it stands</p>
         <ul>
           <li>Member data migration into the System of Record is underway</li>
+        </ul>
+        <p class="k">What it takes to work</p>
+        <ul>
+          <li>One identity everywhere — every member resolves to the same account across Core, Society, and the System of Record (the July centralized login is this anchor)</li>
+          <li>Core member records flowing into the System of Record — in flight</li>
+          <li>Society profile + track data flowing into the System of Record — to be built</li>
+          <li>Lifecycle events (delete/disable) updating the System of Record automatically — webhook live, registration outstanding</li>
+          <li>Field-level source-of-truth rules — for each field, which system wins</li>
         </ul>
       </div>
       <div>
@@ -172,8 +180,8 @@
           <li>How Society track/profile data maps back to the member record</li>
           <li>Which system is the source of truth for each field once the merge is live</li>
         </ul>
-        <p class="k">Owner</p>
-        <ul><li><span class="own">Dev</span></li></ul>
+        <p class="k">Owners</p>
+        <ul><li><span class="own">Dev + Data team</span></li></ul>
       </div>
     </div>
   </div>

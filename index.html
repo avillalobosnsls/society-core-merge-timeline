@@ -6,16 +6,15 @@
 <title>Core + Society — App Merge Timeline</title>
 <style>
   :root{
-    --navy:#0d2240; --navy2:#16233b; --ink:#1f2a44; --muted:#6b7890; --line:#e6e9f0;
+    --navy:#0d2240; --ink:#1f2a44; --muted:#6b7890; --line:#e6e9f0;
     --gold:#e0a100; --gold-bright:#f6c445; --gold-soft:#fff3d6; --teal:#2a9d8f; --teal-soft:#e2f3f1;
-    --blue:#3b6fd4; --blue-soft:#e8eefb;
+    --blue-soft:#e8eefb;
     --paused:#8a93a8; --paused-soft:#eef1f6; --band:#f5f7fb;
-    --society:#f5d547;
   }
   *{box-sizing:border-box}
   body{margin:0;background:#eef1f6;color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;}
-  .wrap{max-width:1220px;margin:28px auto;background:#fff;border-radius:14px;
+  .wrap{max-width:1100px;margin:28px auto;background:#fff;border-radius:14px;
     box-shadow:0 8px 30px rgba(20,35,59,.10);overflow:hidden;}
 
   /* header */
@@ -55,7 +54,6 @@
   .n-live{background:var(--gold);}
   .n-paused{background:var(--paused);}
   .n-future{background:#fff;border:5px solid #c8d0de;box-shadow:none;}
-
   .chip{border:2px solid var(--line);border-radius:12px;padding:12px 14px;height:100%;background:#fff;
     transition:border-color .15s, box-shadow .15s, transform .15s;}
   .stage:hover .chip{border-color:#c8d0de;transform:translateY(-2px);}
@@ -73,78 +71,19 @@
   /* detail panel */
   .detail{margin:24px 34px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
     background:#fff;box-shadow:0 4px 18px rgba(20,35,59,.07);}
-  .dhead{padding:20px 26px 16px;border-bottom:1px solid var(--line);background:var(--band);}
-  .dhead h2{margin:0;font-size:21px;color:var(--navy);letter-spacing:-.01em;}
-  .dhead p{margin:7px 0 0;font-size:14px;line-height:1.55;color:var(--ink);max-width:900px;}
-  .dbody{display:grid;grid-template-columns:minmax(300px,1fr) minmax(0,1.35fr);gap:0;}
-  .dleft{padding:20px 26px 22px;border-right:1px solid var(--line);}
+  .dhead{padding:18px 26px 14px;border-bottom:1px solid var(--line);background:var(--band);}
+  .dhead h2{margin:0;font-size:20px;color:var(--navy);letter-spacing:-.01em;}
+  .dhead .hwhen{margin:6px 0 0;font-size:13.5px;font-weight:700;color:var(--ink);}
+  .dbody{padding:18px 26px 22px;}
   .k{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 7px;}
-  .dleft ul{margin:0 0 18px;padding-left:18px;font-size:13.5px;line-height:1.55;}
-  .dleft li{margin:4px 0;}
-  .mkt{background:var(--gold-soft);border:1px solid #f3ddad;border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.5;}
+  .dbody ul{margin:0 0 18px;padding-left:19px;font-size:14px;line-height:1.6;}
+  .dbody li{margin:5px 0;}
+  .mkt{background:var(--gold-soft);border:1px solid #f3ddad;border-radius:10px;padding:12px 16px;font-size:13.5px;line-height:1.55;}
   .mkt .k{color:#8a6300;margin-bottom:5px;}
+  .mkt ul{margin:0;padding-left:19px;font-size:13.5px;}
+  .mkt li{margin:4px 0;}
   .mkt.quiet{background:var(--band);border-color:var(--line);}
   .mkt.quiet .k{color:var(--muted);}
-  .dright{padding:20px 26px 24px;background:linear-gradient(180deg,#fff 0%,var(--band) 100%);}
-  .shots{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;}
-  .shot{width:172px;text-align:center;}
-  .phone{border-radius:22px;border:5px solid var(--navy);overflow:hidden;background:#fff;
-    box-shadow:0 8px 22px rgba(20,35,59,.18);position:relative;aspect-ratio:44/95;}
-  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
-  .shot.wide{width:280px;}
-  .phone.snip{aspect-ratio:auto;border-radius:14px;border-width:4px;}
-  .phone.snip img{height:auto;}
-  .shot.xwide{width:min(430px,100%);}
-  .phone.web{aspect-ratio:16/10.5;border-radius:10px;border-width:4px;}
-  .cap{font-size:12px;line-height:1.4;color:var(--ink);margin-top:9px;font-weight:600;}
-  .cap .tag{display:block;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
-  .cap .tag.mock{color:#a05e03;}
-  .cap .tag.fig{color:#137165;}
-
-  /* web-page mock (Members Area entry points) */
-  .wmock{width:100%;height:100%;background:#f4f4f2;display:flex;font-size:8px;text-align:left;}
-  .w-side{flex:0 0 17%;background:#2b3a52;display:flex;flex-direction:column;gap:5px;padding:8px 7px;color:#c7d1e0;font-weight:700;font-size:7px;}
-  .w-side .on{color:#fff;background:#3d4f6d;border-radius:4px;padding:3px 5px;margin:0 -3px;}
-  .w-main{flex:1;display:flex;flex-direction:column;gap:6px;padding:8px;}
-  .w-block{background:#fff;border-radius:5px;padding:6px;color:#9aa3b5;box-shadow:0 1px 2px rgba(0,0,0,.06);}
-  .w-block .t{font-weight:800;color:#6b7890;letter-spacing:.05em;font-size:7.5px;}
-  .w-lines i{display:block;height:4px;border-radius:2px;background:#e7e9ee;margin-top:4px;}
-  .w-lines i:last-child{width:62%;}
-  .w-soc{margin-top:auto;background:#faf7f0;border:2px solid var(--gold);border-radius:6px;box-shadow:0 3px 10px rgba(224,161,0,.35);
-    display:flex;align-items:center;gap:6px;padding:6px;position:relative;color:#444;}
-  .w-art{flex:0 0 26px;height:30px;border-radius:4px;background:linear-gradient(140deg,#e8b4a0 0%,#5f4b8b 55%,#2a9d8f 100%);}
-  .w-soc .s-logo{display:inline-block;background:var(--society);color:#1a1a1a;font-weight:900;border-radius:3px;padding:0 3px;font-family:Georgia,serif;font-size:8px;}
-  .w-soc .tt{font-weight:800;color:#1a1a1a;font-size:8px;font-family:Georgia,serif;}
-  .w-soc .cc{font-size:6.5px;color:#8a6300;background:var(--gold-soft);border-radius:3px;padding:2px 4px;margin-top:3px;display:inline-block;font-weight:700;}
-  .w-btn{margin-left:auto;flex:0 0 auto;background:#1a1a1a;color:#fff;font-weight:800;font-size:6.5px;border-radius:3px;padding:4px 6px;}
-
-  /* illustrative mini-mocks (CSS-drawn) */
-  .mock{width:100%;height:100%;background:#faf7f0;display:flex;flex-direction:column;font-size:9px;text-align:left;}
-  .m-top{background:var(--society);padding:12px 10px 10px;}
-  .m-brand{font-weight:800;font-size:12px;color:#1a1a1a;font-family:Georgia,serif;}
-  .m-hi{font-family:Georgia,serif;font-size:13px;color:#1a1a1a;margin-top:8px;font-weight:700;}
-  .m-body{padding:9px;display:flex;flex-direction:column;gap:7px;flex:1;}
-  .m-card{background:#fff;border-radius:8px;padding:8px;color:#444;box-shadow:0 1px 3px rgba(0,0,0,.08);}
-  .m-card .t{font-weight:700;color:#1a1a1a;font-size:9.5px;}
-  .m-new{background:var(--navy);color:#fff;border:2px solid var(--gold);box-shadow:0 3px 10px rgba(224,161,0,.45);position:relative;}
-  .m-new .t{color:#fff;font-size:10px;}
-  .m-new .s{color:#c2cfe4;margin-top:2px;display:block;}
-  .m-btn{display:inline-block;background:var(--gold-bright);color:#1a1a1a;font-weight:800;border-radius:99px;
-    padding:3px 9px;margin-top:6px;font-size:9px;}
-  .m-badge{position:absolute;top:-8px;right:-6px;background:#e5484d;color:#fff;font-weight:800;font-size:8px;
-    border-radius:99px;padding:2px 7px;letter-spacing:.05em;}
-  .m-dim{opacity:.55;}
-  .m-bar{height:5px;border-radius:3px;background:#e8e2d4;margin-top:5px;overflow:hidden;}
-  .m-bar i{display:block;height:100%;width:45%;background:var(--teal);}
-  .m-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:8px;
-    padding:7px 8px;color:#1a1a1a;font-weight:700;font-size:9.5px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
-  .m-ok{color:#137165;}
-  .m-lock{color:#9aa3b5;}
-  .m-note{font-size:8.5px;color:#8a6300;background:var(--gold-soft);border-radius:6px;padding:5px 7px;line-height:1.35;}
-  .m-v2{width:100%;height:100%;background:linear-gradient(160deg,var(--navy) 0%,#1b3358 100%);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#fff;padding:14px;text-align:center;}
-  .m-v2 .big{font-family:Georgia,serif;font-size:15px;font-weight:700;color:var(--gold-bright);line-height:1.3;}
-  .m-v2 .sm{font-size:9px;color:#c2cfe4;line-height:1.5;}
 
   /* process strip */
   .process{margin:26px 34px 0;border:1px solid var(--line);border-radius:12px;background:var(--band);padding:18px 22px;}
@@ -165,8 +104,6 @@
       background:linear-gradient(180deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 44%,#c8d0de 44%,#c8d0de 100%);}
     .stage{padding-top:0;padding-left:40px;}
     .node{left:14px;top:14px;transform:translateX(-40%);}
-    .dbody{grid-template-columns:1fr;}
-    .dleft{border-right:0;border-bottom:1px solid var(--line);}
     .pgrid{grid-template-columns:1fr;}
     h1{font-size:24px;}
   }
@@ -178,8 +115,8 @@
     <div class="brand">NSLS <span class="x">✕</span> The Society <span class="x">· Members App</span></div>
     <h1>Core + Society: <span class="g">one app, one login</span></h1>
     <p class="sub">We're bringing the members app and the Society experience together, step by step.
-      Each release below shows <b>what members will see</b>, <b>what it looks like</b>, and
-      <b>what Marketing owns</b> — so content and campaigns can be planned right alongside the builds.</p>
+      Each release below shows <b>what members will get</b> and <b>what Marketing owns</b> —
+      so content and campaigns can be planned right alongside the builds.</p>
     <span class="stamp"><span class="dot"></span>Updated Jul 21, 2026 · for the Marketing Sync</span>
   </header>
 
@@ -190,7 +127,7 @@
   </div>
 
   <div class="tl">
-    <p class="hint">👇 Tap a release to see what it includes and what it looks like</p>
+    <p class="hint">👇 Tap a release to see what it includes</p>
     <div class="spine" id="spine"></div>
   </div>
 
@@ -216,97 +153,39 @@
     <b>Why the small release first:</b> Apple asked for a couple of changes (account deletion, purchase links).
     Rather than risk the big release in review, we ship a small compliant update that still opens the Society door —
     members get access now instead of waiting.
-    <br/><b>About the visuals:</b> screens marked <b>“current app / current society”</b> are real;
-    <b>“design preview”</b> comes straight from the Society iOS Figma (Tyler) and may still evolve;
-    <b>“illustrative”</b> are sketches of what's coming — final designs will differ.
     Owner: Angelica Evans (Product). Sources: Jul 17 App Sync, Jul 20 Project Review, NIA roadmap.
   </div>
 </div>
 
 <script>
-const IMG = p => `<img src="assets/${p}" alt=""/>`;
-
-const MOCK_WEB = `
-  <div class="wmock">
-    <div class="w-side"><span>Courses</span><span class="on">Orientation</span><span>LTD</span><span>Speaker Broadcasts</span><span>SNTs</span><span>Induction</span></div>
-    <div class="w-main">
-      <div class="w-block w-lines"><span class="t">ORIENTATION</span><i></i><i></i></div>
-      <div class="w-block w-lines"><span class="t">CONGRATULATIONS!</span><i></i><i></i></div>
-      <div class="w-soc">
-        <div class="w-art"></div>
-        <div><span class="s-logo">S.</span> <span class="tt">Society</span> · Career. Coaching. Clarity.
-          <span class="cc">✍️ custom copy per page — Marketing</span></div>
-        <div class="w-btn">EXPLORE SOCIETY</div>
-      </div>
-    </div>
-  </div>`;
-
-const MOCK_TRACKS = `
-  <div class="mock">
-    <div class="m-top"><div class="m-brand">Society</div><div class="m-hi">Your tracks</div></div>
-    <div class="m-body">
-      <div class="m-row"><span>Personal Insights</span><span class="m-ok">✓ Done</span></div>
-      <div class="m-card"><div class="t">Career Clarity</div><div class="m-bar"><i></i></div><span class="m-btn">Continue →</span></div>
-      <div class="m-row"><span>Career Readiness</span><span class="m-lock">🔒 Up next</span></div>
-      <div class="m-note">Tracks live fully inside the app — with a brand-new welcome &amp; onboarding.</div>
-    </div>
-  </div>`;
-
-const MOCK_V2 = `
-  <div class="m-v2">
-    <div class="big">Everything.<br/>Native.<br/>Instant.</div>
-    <div class="sm">One seamless experience — no lines between Core and Society at all. Shaped together when we get here.</div>
-  </div>`;
-
 const stages=[
  {
   id:'v1', node:'n-done', pill:'p-done', ptxt:'Shipped', v:'v1', when:'Live since Jun 12',
   one:'The refreshed members app — the foundation.',
   head:'v1 — the refreshed members app', hwhen:'Live since June 12',
-  plain:'This is the app members have in their hands today. It carries the full Foundations of Leadership journey, a brand-new home for chapter leaders, and simpler navigation. Society content isn’t in it yet — that’s what the next steps add.',
-  get:['The full Foundations of Leadership journey, step by step','A dedicated dashboard for chapter leaders','Member benefits, events, and messages in one place'],
-  mkt:{quiet:true, k:'Marketing owns', t:'Done — thank you! 💛'},
-  shots:[
-    {img:'screen-home.png', cap:'Home — the member’s journey', tag:'current app'},
-    {img:'screen-benefits.png', cap:'Member benefits hub', tag:'current app'},
-    {img:'screen-chapter.png', cap:'Chapter experience', tag:'current app'},
-  ]
+  get:['The full Foundations of Leadership journey, step by step','A dedicated dashboard for chapter leaders','Member benefits, events, and messages in one place','No Society content yet — that’s what the next steps add'],
+  mkt:{quiet:true, k:'Marketing owns', items:['Done — thank you! 💛']},
  },
  {
   id:'v11', node:'n-live', pill:'p-live', ptxt:'In flight', v:'v1.1', when:'Submitted to Apple Jul 20',
   one:'The door to Society opens — both ways.',
-  head:'v1.1 — the door to Society opens, both ways', hwhen:'Submitted to Apple July 20 · dev finishing the pieces this week',
-  plain:'One release with everything needed to move the merge forward: a Society card on the Members Area dashboard that takes members into Society in one tap, a button that brings them right back to Core, and the housekeeping Apple asked for. Tyler’s design is in; the final words are Marketing’s.',
-  get:['<b>Society card on the Members Area dashboard</b> — hero artwork, “Career. Coaching. Clarity.”, and an Explore Society button every member sees; one tap in, already signed in','<b>A button back to Core</b> — members return to the Members Area just as easily, so the door swings both ways (no dead ends)','Members can delete their account in-app, with a 30-day change-of-mind window (an Apple requirement)','Program purchases move to nsls.org — Apple takes 30% of anything sold in-app, so we send folks to the website instead','Also exploring: a Society spot in the Member Benefits list for a second doorway'],
-  mkt:{quiet:false, k:'Marketing owns — the near-term ask ⭐', t:'<b>Final CTA copy sign-off</b> for the Society card (design shown is Tyler’s current Figma). Dev is building it this week, so this is the one thing we’d love locked at this sync. And a small heads-up: any materials pointing to in-app program purchases should point to nsls.org going forward.'},
-  shots:[
-    {img:'fig-society-card.png', cap:'The “Explore Society” doorway — and a button brings members back to Core', tag:'design preview', fig:true, snip:true},
-    {img:'fig-home-society.png', cap:'In context — the Members Area dashboard', tag:'design preview', fig:true},
-    {img:'screen-welcome.png', cap:'Where it leads — the Society experience', tag:'current society'},
-  ]
+  head:'v1.1 — the door to Society opens, both ways', hwhen:'Submitted to Apple July 20 · dev finishing the pieces this week · live as soon as it’s approved',
+  get:['<b>Society entry point on the Members Area dashboard</b> — an “Explore Society” card every member sees; one tap in, already signed in','<b>A button back to Core</b> — members return to the Members Area just as easily, so the door swings both ways (no dead ends)','Account deletion in-app, with a 30-day change-of-mind window (an Apple requirement)','Program purchases move to nsls.org — Apple takes 30% of anything sold in-app, so we send folks to the website instead','Also exploring: a Society spot in the Member Benefits list for a second doorway'],
+  mkt:{quiet:false, k:'Marketing owns — the near-term ask ⭐', items:['<b>Final CTA copy sign-off</b> for the Society card — dev is building it this week, so this is the one thing we’d love locked at this sync','Heads-up: any materials pointing to in-app program purchases should point to nsls.org going forward']},
  },
  {
   id:'v15', node:'n-paused', pill:'p-paused', ptxt:'Paused · date TBD', v:'v1.5', when:'The big one',
   one:'Society moves in — tracks living fully inside the app.',
-  head:'v1.5 — Society moves in', hwhen:'Paused while we time it right · new date TBD',
-  plain:'This is the release where the merge really shows: the Society tracks — Personal Insights, Career Clarity, Career Readiness — live fully inside the app, wrapped in a brand-new welcome and onboarding. And Society doorways open across the Members Area too: a customized banner at the bottom of each journey page. It’s paused (not canceled!) so we launch it at the right moment with the runway it deserves — including a real campaign.',
+  head:'v1.5 — Society moves in', hwhen:'Paused while we time it right · new date TBD · paused, not canceled',
   get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','<b>Society entry points across the Members Area</b> — a banner at the bottom of Orientation, LTD, SNTs, and post-induction pages, each customized to where the member is in their journey','A fresh coat of paint — updated brand colors throughout','If time allows: Coach chat and a Community sneak peek'],
-  mkt:{quiet:false, k:'Marketing owns — start now, long lead 📅', t:'<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey. This can start now, while the release is paused. Plus track intro/outro content, onboarding copy, and the launch campaign once the date firms up.'},
-  shots:[
-    {html:MOCK_WEB, cap:'Members Area — Society banner at the bottom of each journey page, copy customized per page', tag:'illustrative — placement per current build', mock:true, web:true},
-    {html:MOCK_TRACKS, cap:'Tracks living in the app', tag:'illustrative', mock:true},
-  ]
+  mkt:{quiet:false, k:'Marketing owns — start now, long lead 📅', items:['<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey; can start now, while the release is paused','Track intro/outro content and onboarding copy','The launch campaign, once the date firms up — planned, not rushed']},
  },
  {
   id:'v2', node:'n-future', pill:'p-future', ptxt:'Future', v:'v2', when:'Down the road',
   one:'One seamless experience — no seams at all.',
   head:'v2 — one seamless experience', hwhen:'Future · not yet scheduled',
-  plain:'The finish line: Society content built natively into the app — the fastest, smoothest version of the merge, with no lines between Core and Society at all. We’ll shape this one together when it’s closer.',
-  get:['Everything Society offers, built natively into the app','Fastest, most polished version of the experience'],
-  mkt:{quiet:true, k:'Marketing owns', t:'TBD — we’ll shape it together when it’s on the calendar.'},
-  shots:[
-    {html:MOCK_V2, cap:'The destination', tag:'concept', mock:true},
-  ]
+  get:['Everything Society offers, built natively into the app','Fastest, most polished version of the experience — no lines between Core and Society at all'],
+  mkt:{quiet:true, k:'Marketing owns', items:['TBD — we’ll shape it together when it’s on the calendar']},
  },
 ];
 
@@ -327,29 +206,20 @@ stages.forEach((s,i)=>{
 function render(i){
   const s=stages[i];
   document.querySelectorAll('.stage').forEach((el,j)=>el.classList.toggle('sel', j===i));
-  const shots=s.shots.map(sh=>
-    `<div class="shot${sh.snip?' wide':''}${sh.web?' xwide':''}">
-       <div class="phone${sh.snip?' snip':''}${sh.web?' web':''}">${sh.img?IMG(sh.img):sh.html}</div>
-       <div class="cap">${sh.cap}<span class="tag${sh.mock?' mock':''}${sh.fig?' fig':''}">${sh.tag}</span></div>
-     </div>`).join('');
   document.getElementById('detail').innerHTML=
-   `<div class="dhead"><h2>${s.head}</h2><p><b>${s.hwhen}.</b> ${s.plain}</p></div>
+   `<div class="dhead"><h2>${s.head}</h2><p class="hwhen">${s.hwhen}</p></div>
     <div class="dbody">
-      <div class="dleft">
-        <p class="k">What members get</p>
-        <ul>${s.get.map(g=>`<li>${g}</li>`).join('')}</ul>
-        <div class="mkt${s.mkt.quiet?' quiet':''}"><p class="k">${s.mkt.k}</p>${s.mkt.t}</div>
-      </div>
-      <div class="dright">
-        <p class="k" style="margin-bottom:14px">What it looks like</p>
-        <div class="shots">${shots}</div>
+      <p class="k">What members get</p>
+      <ul>${s.get.map(g=>`<li>${g}</li>`).join('')}</ul>
+      <div class="mkt${s.mkt.quiet?' quiet':''}"><p class="k">${s.mkt.k}</p>
+        <ul>${s.mkt.items.map(m=>`<li>${m}</li>`).join('')}</ul>
       </div>
     </div>`;
 }
 
 document.querySelectorAll('.stage').forEach(el=>
   el.addEventListener('click',()=>render(+el.dataset.i)));
-render(1); // default: v1.1 step 1 — where we are now
+render(1); // default: v1.1 — where we are now
 </script>
 </body>
 </html>

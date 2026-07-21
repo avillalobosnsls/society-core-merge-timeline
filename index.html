@@ -147,6 +147,25 @@
   .mkt.quiet{background:var(--band);border-color:var(--line);}
   .mkt.quiet .k{color:var(--muted);}
 
+  /* technical timeline */
+  .tech{margin:24px 34px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:#fff;box-shadow:0 4px 18px rgba(20,35,59,.07);}
+  .tech .dhead h2{font-size:18px;}
+  .tech-scroll{overflow-x:auto;}
+  .tech table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.5;min-width:720px;}
+  .tech th{text-align:left;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);padding:12px 14px 8px;border-bottom:2px solid var(--line);background:var(--band);}
+  .tech td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .tech tr:last-child td{border-bottom:0;}
+  .tech td:first-child{font-weight:700;color:var(--navy);white-space:nowrap;}
+  .tech .tsub{display:block;font-weight:400;color:var(--muted);font-size:12px;white-space:normal;margin-top:2px;max-width:200px;}
+  .tech .st{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    border-radius:999px;padding:2px 9px;margin-right:6px;white-space:nowrap;}
+  .st-done{background:var(--teal-soft);color:#137165;}
+  .st-flight{background:var(--gold-soft);color:#8a6300;}
+  .st-open{background:var(--blue-soft);color:#2a55ab;}
+  .tech .nb{font-weight:700;color:var(--navy);white-space:nowrap;}
+
   .ask{margin:24px 34px 0;background:var(--blue-soft);border:1px solid #cddafa;border-radius:12px;
     padding:14px 22px;font-size:13.5px;line-height:1.5;}
   .ask b{color:#2a55ab;}
@@ -189,6 +208,55 @@
   </div>
 
   <div class="detail" id="detail"></div>
+
+  <div class="tech">
+    <div class="dhead">
+      <h2>Technical timeline — the plumbing behind the merge</h2>
+      <p class="hwhen">What has to be true under the hood, when it's needed, and where it stands</p>
+    </div>
+    <div class="tech-scroll">
+      <table>
+        <thead><tr><th>Capability</th><th>Needed by</th><th>Where it stands</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>One login / identity<span class="tsub">Every Society visit ties to the member's NSLS account</span></td>
+            <td><span class="nb">v1.1</span></td>
+            <td><span class="st st-done">✅ Live</span>Centralized auth live since June across Core, Society, and the app</td>
+          </tr>
+          <tr>
+            <td>Account lifecycle<span class="tsub">Delete/disable flows through every connected system</span></td>
+            <td><span class="nb">v1.1</span></td>
+            <td><span class="st st-flight">⏳ In flight</span>In-app deletion released (30-day window); lifecycle webhook live — downstream apps registering to receive it <span class="own">(Dev)</span></td>
+          </tr>
+          <tr>
+            <td>Login &amp; access visibility<span class="tsub">Who logged in, who tapped into Society, from which surface</span></td>
+            <td><span class="nb">v1.1 launch</span></td>
+            <td><span class="st st-open">❓ To define</span>Event tracking for Explore Society taps + Society sessions, and where that data lands <span class="own">(Dev + Product)</span></td>
+          </tr>
+          <tr>
+            <td>Masquerade / impersonation<span class="tsub">Can support &amp; admins act as a member across Core + Society?</span></td>
+            <td><span class="nb">v1.5</span></td>
+            <td><span class="st st-open">❓ To define</span>Open question — whether masquerade carries across both systems under one login, and who's allowed to use it <span class="own">(Dev + Product)</span></td>
+          </tr>
+          <tr>
+            <td>Data mapping<span class="tsub">Core member records ↔ Society profiles ↔ System of Record</span></td>
+            <td><span class="nb">v1.5</span></td>
+            <td><span class="st st-flight">⏳ In flight</span>Member data migration to the SoR underway; Society track/profile data mapping still to define <span class="own">(Dev)</span></td>
+          </tr>
+          <tr>
+            <td>Metrics &amp; reports<span class="tsub">Entries, track starts/completions — for Marketing and leadership</span></td>
+            <td><span class="nb">v1.5 launch</span></td>
+            <td><span class="st st-open">❓ To define</span>Metric set + where reports live, so campaign impact is measurable from day one <span class="own">(Product + Marketing)</span></td>
+          </tr>
+          <tr>
+            <td>Admin access<span class="tsub">Roles &amp; permissions for member activity across both systems</span></td>
+            <td><span class="nb">v1.5</span></td>
+            <td><span class="st st-open">❓ To define</span>Who can see and manage what, once Core and Society share one account <span class="own">(Dev + Product)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="ask">
     <b>❓ Question for the group:</b> what lead time does the team realistically need for release-tied content

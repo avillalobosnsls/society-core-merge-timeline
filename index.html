@@ -80,6 +80,21 @@
   .dbody li{margin:5px 0;}
   .dbody ul.explore{color:var(--muted);font-size:13.5px;}
   .dbody ul.explore li::marker{color:#c8d0de;}
+  /* status board — done / in flight / to decide */
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 20px;}
+  .bcol{border-radius:10px;padding:11px 14px;font-size:13px;line-height:1.5;border:1px solid;}
+  .bcol ul{margin:0;padding-left:17px;}
+  .bcol li{margin:4px 0;}
+  .bcol .k{margin-bottom:6px;}
+  .b-done{background:var(--teal-soft);border-color:#c4e4e0;}
+  .b-done .k{color:#137165;}
+  .b-pending{background:var(--gold-soft);border-color:#f3ddad;}
+  .b-pending .k{color:#8a6300;}
+  .b-decide{background:var(--blue-soft);border-color:#cddafa;}
+  .b-decide .k{color:#2a55ab;}
+  .own{font-weight:800;color:var(--navy);}
+  .bempty{color:var(--muted);font-style:italic;}
+
   /* device mockups — explicit desktop vs app */
   .shots{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start;margin:4px 0 20px;}
   .shot{text-align:center;}
@@ -145,7 +160,7 @@
       background:linear-gradient(180deg,var(--teal) 0%,var(--teal) 22%,var(--gold) 22%,var(--gold) 72%,#c8d0de 72%,#c8d0de 100%);}
     .stage{padding-top:0;padding-left:40px;}
     .node{left:14px;top:14px;transform:translateX(-40%);}
-    .pgrid{grid-template-columns:1fr;}
+    .board{grid-template-columns:1fr;}
     h1{font-size:24px;}
   }
 </style>
@@ -156,7 +171,8 @@
     <div class="brand">NSLS <span class="x">✕</span> The Society <span class="x">· Members App</span></div>
     <h1>Core + Society: <span class="g">one app, one login</span></h1>
     <p class="sub">We're bringing the members app and the Society experience together, step by step.
-      Each release below shows <b>what members will get</b> and <b>what Marketing owns</b> —
+      Each release below shows <b>where it stands</b> (done / in flight / to decide, with owners),
+      <b>what members will get</b>, and <b>what Marketing owns</b> —
       so content and campaigns can be planned right alongside the builds.</p>
     <span class="stamp"><span class="dot"></span>Updated Jul 21, 2026 · for the Marketing Sync</span>
   </header>
@@ -233,6 +249,11 @@ const stages=[
   id:'v1', node:'n-done', pill:'p-done', ptxt:'Shipped', v:'v1', when:'Live since Jul 12',
   one:'All of FOL/Core — with a new face and look.',
   head:'v1 — all of FOL/Core, with a new face and look', hwhen:'Live since July 12',
+  board:{
+    done:['Released July 12 — live for members'],
+    pending:[],
+    decide:[],
+  },
   get:['Everything FOL/Core offers today — carried over in full','A brand-new face and look for the whole experience','No Society content yet — that’s what the next steps add'],
   shots:[
     {dev:'📱 In the app', img:'screen-home.png', cap:'The refreshed home — the new face and look (current app)'},
@@ -243,6 +264,11 @@ const stages=[
   id:'v11', node:'n-live', pill:'p-live', ptxt:'In flight', v:'v1.1', when:'Live as soon as approved by the App Store',
   one:'The door to Society opens — both ways.',
   head:'v1.1 — the door to Society opens, both ways', hwhen:'Submitted to Apple July 20 · dev finishing the pieces this week · goes live as soon as it’s approved by the App Store',
+  board:{
+    done:['Account deletion built and released in auth','Submitted to Apple — July 20'],
+    pending:['App Store review — external gate, timing is Apple’s <span class="own">(Apple)</span>','Society card + back-to-Core button build — this week <span class="own">(Dev)</span>','Final CTA copy sign-off <span class="own">(Marketing — this sync)</span>'],
+    decide:['Lock the card CTA copy at this sync so the build ships with final words'],
+  },
   get:['<b>Society entry point on the Members Area dashboard — on desktop and in the app</b> — an “Explore Society” card every member sees; one tap in, already signed in','<b>A button back to Core</b> — members return to the Members Area just as easily, so the door swings both ways (no dead ends)','Account deletion in-app, with a 30-day change-of-mind window (an Apple requirement)','<b>Users won’t be able to purchase products within the app</b> — program purchases happen on nsls.org instead'],
   explore:['A Society spot in the Member Benefits list for a second doorway'],
   shots:[
@@ -255,6 +281,11 @@ const stages=[
   id:'v15', node:'n-live', pill:'p-live', ptxt:'Targeting mid-Aug', v:'v1.5', when:'The big one · targeting mid-August',
   one:'Society moves in — tracks living fully inside the app.',
   head:'v1.5 — Society moves in', hwhen:'The big release · new target: mid-August',
+  board:{
+    done:['New target set — mid-August'],
+    pending:['Tracks + onboarding build <span class="own">(Dev)</span>','Entry-point banners on Orientation / LTD / SNTs / post-induction <span class="own">(Dev)</span>','Customized banner copy per entry point — start now <span class="own">(Marketing)</span>','Track intro/outro + onboarding copy <span class="own">(Marketing)</span>'],
+    decide:['Launch-campaign content timeline — lead time locks at this sync','Coach chat + Community sneak peek: in or out, based on time'],
+  },
   get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','<b>Society entry points across the Members Area</b> — a banner at the bottom of Orientation, LTD, SNTs, and post-induction pages, each customized to where the member is in their journey','A fresh coat of paint — updated brand colors throughout'],
   explore:['Coach chat and a Community sneak peek — only if time allows'],
   shots:[
@@ -267,6 +298,11 @@ const stages=[
   id:'v2', node:'n-future', pill:'p-future', ptxt:'Future', v:'v2', when:'Down the road',
   one:'One seamless experience — no seams at all.',
   head:'v2 — one seamless experience', hwhen:'Future · not yet scheduled',
+  board:{
+    done:[],
+    pending:[],
+    decide:['Scope and timing — picked up after v1.5 lands'],
+  },
   get:['Everything Society offers, built natively into the app','Fastest, most polished version of the experience — no lines between Core and Society at all'],
   mkt:{quiet:true, k:'Marketing owns', items:['TBD — we’ll shape it together when it’s on the calendar']},
  },
@@ -292,6 +328,11 @@ function render(i){
   document.getElementById('detail').innerHTML=
    `<div class="dhead"><h2>${s.head}</h2><p class="hwhen">${s.hwhen}</p></div>
     <div class="dbody">
+      ${s.board?`<div class="board">
+        <div class="bcol b-done"><p class="k">✅ Done</p>${s.board.done.length?`<ul>${s.board.done.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<span class="bempty">Nothing yet</span>'}</div>
+        <div class="bcol b-pending"><p class="k">⏳ In flight — owner</p>${s.board.pending.length?`<ul>${s.board.pending.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<span class="bempty">Nothing open</span>'}</div>
+        <div class="bcol b-decide"><p class="k">❓ To decide</p>${s.board.decide.length?`<ul>${s.board.decide.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<span class="bempty">Nothing open</span>'}</div>
+      </div>`:''}
       <p class="k">What members get</p>
       <ul>${s.get.map(g=>`<li>${g}</li>`).join('')}</ul>
       ${s.explore?`<p class="k">Being explored — not committed</p>

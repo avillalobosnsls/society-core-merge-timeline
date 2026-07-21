@@ -94,10 +94,29 @@
   .shot.wide{width:280px;}
   .phone.snip{aspect-ratio:auto;border-radius:14px;border-width:4px;}
   .phone.snip img{height:auto;}
+  .shot.xwide{width:min(430px,100%);}
+  .phone.web{aspect-ratio:16/10.5;border-radius:10px;border-width:4px;}
   .cap{font-size:12px;line-height:1.4;color:var(--ink);margin-top:9px;font-weight:600;}
   .cap .tag{display:block;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
   .cap .tag.mock{color:#a05e03;}
   .cap .tag.fig{color:#137165;}
+
+  /* web-page mock (Members Area entry points) */
+  .wmock{width:100%;height:100%;background:#f4f4f2;display:flex;font-size:8px;text-align:left;}
+  .w-side{flex:0 0 17%;background:#2b3a52;display:flex;flex-direction:column;gap:5px;padding:8px 7px;color:#c7d1e0;font-weight:700;font-size:7px;}
+  .w-side .on{color:#fff;background:#3d4f6d;border-radius:4px;padding:3px 5px;margin:0 -3px;}
+  .w-main{flex:1;display:flex;flex-direction:column;gap:6px;padding:8px;}
+  .w-block{background:#fff;border-radius:5px;padding:6px;color:#9aa3b5;box-shadow:0 1px 2px rgba(0,0,0,.06);}
+  .w-block .t{font-weight:800;color:#6b7890;letter-spacing:.05em;font-size:7.5px;}
+  .w-lines i{display:block;height:4px;border-radius:2px;background:#e7e9ee;margin-top:4px;}
+  .w-lines i:last-child{width:62%;}
+  .w-soc{margin-top:auto;background:#faf7f0;border:2px solid var(--gold);border-radius:6px;box-shadow:0 3px 10px rgba(224,161,0,.35);
+    display:flex;align-items:center;gap:6px;padding:6px;position:relative;color:#444;}
+  .w-art{flex:0 0 26px;height:30px;border-radius:4px;background:linear-gradient(140deg,#e8b4a0 0%,#5f4b8b 55%,#2a9d8f 100%);}
+  .w-soc .s-logo{display:inline-block;background:var(--society);color:#1a1a1a;font-weight:900;border-radius:3px;padding:0 3px;font-family:Georgia,serif;font-size:8px;}
+  .w-soc .tt{font-weight:800;color:#1a1a1a;font-size:8px;font-family:Georgia,serif;}
+  .w-soc .cc{font-size:6.5px;color:#8a6300;background:var(--gold-soft);border-radius:3px;padding:2px 4px;margin-top:3px;display:inline-block;font-weight:700;}
+  .w-btn{margin-left:auto;flex:0 0 auto;background:#1a1a1a;color:#fff;font-weight:800;font-size:6.5px;border-radius:3px;padding:4px 6px;}
 
   /* illustrative mini-mocks (CSS-drawn) */
   .mock{width:100%;height:100%;background:#faf7f0;display:flex;flex-direction:column;font-size:9px;text-align:left;}
@@ -189,6 +208,8 @@
   <div class="ask">
     <b>❓ Question for the group:</b> what lead time does the team realistically need for release-tied content
     (e.g., the v1.5 launch campaign)? That number becomes the anchor for the request timeline.
+    <br/><b>✍️ And one thing we can start now:</b> customized Society banner copy for each Members Area entry point
+    (post-induction, Orientation, LTD, SNTs) — v1.5 is paused, so this is pressure-free runway.
   </div>
 
   <div class="foot">
@@ -204,6 +225,21 @@
 
 <script>
 const IMG = p => `<img src="assets/${p}" alt=""/>`;
+
+const MOCK_WEB = `
+  <div class="wmock">
+    <div class="w-side"><span>Courses</span><span class="on">Orientation</span><span>LTD</span><span>Speaker Broadcasts</span><span>SNTs</span><span>Induction</span></div>
+    <div class="w-main">
+      <div class="w-block w-lines"><span class="t">ORIENTATION</span><i></i><i></i></div>
+      <div class="w-block w-lines"><span class="t">CONGRATULATIONS!</span><i></i><i></i></div>
+      <div class="w-soc">
+        <div class="w-art"></div>
+        <div><span class="s-logo">S.</span> <span class="tt">Society</span> · Career. Coaching. Clarity.
+          <span class="cc">✍️ custom copy per page — Marketing</span></div>
+        <div class="w-btn">EXPLORE SOCIETY</div>
+      </div>
+    </div>
+  </div>`;
 
 const MOCK_TRACKS = `
   <div class="mock">
@@ -265,12 +301,12 @@ const stages=[
   id:'v15', node:'n-paused', pill:'p-paused', ptxt:'Paused · date TBD', v:'v1.5', when:'The big one',
   one:'Society moves in — tracks living fully inside the app.',
   head:'v1.5 — Society moves in', hwhen:'Paused while we time it right · new date TBD',
-  plain:'This is the release where the merge really shows: the Society tracks — Personal Insights, Career Clarity, Career Readiness — live fully inside the app, wrapped in a brand-new welcome and onboarding. It’s paused (not canceled!) so we launch it at the right moment with the runway it deserves — including a real campaign.',
-  get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','A fresh coat of paint — updated brand colors throughout','If time allows: Coach chat and a Community sneak peek'],
-  mkt:{quiet:false, k:'Marketing owns — long lead 📅', t:'Track intro/outro content, onboarding copy, and the launch campaign. As soon as the date firms up, we’ll lock lead time together — this one gets planned, not rushed.'},
+  plain:'This is the release where the merge really shows: the Society tracks — Personal Insights, Career Clarity, Career Readiness — live fully inside the app, wrapped in a brand-new welcome and onboarding. And Society doorways open across the Members Area too: a customized banner at the bottom of each journey page. It’s paused (not canceled!) so we launch it at the right moment with the runway it deserves — including a real campaign.',
+  get:['The three Society tracks, start to finish, inside the app: Personal Insights → Career Clarity → Career Readiness','A brand-new member welcome and onboarding experience','<b>Society entry points across the Members Area</b> — a banner at the bottom of Orientation, LTD, SNTs, and post-induction pages, each customized to where the member is in their journey','A fresh coat of paint — updated brand colors throughout','If time allows: Coach chat and a Community sneak peek'],
+  mkt:{quiet:false, k:'Marketing owns — start now, long lead 📅', t:'<b>Customized banner copy for each entry point</b> — post-induction, Orientation, LTD, SNTs — each speaking to that moment in the member’s journey. This can start now, while the release is paused. Plus track intro/outro content, onboarding copy, and the launch campaign once the date firms up.'},
   shots:[
+    {html:MOCK_WEB, cap:'Members Area — Society banner at the bottom of each journey page, copy customized per page', tag:'illustrative — placement per current build', mock:true, web:true},
     {html:MOCK_TRACKS, cap:'Tracks living in the app', tag:'illustrative', mock:true},
-    {img:'screen-welcome.png', cap:'The Society feel it brings in', tag:'current society'},
   ]
  },
  {
@@ -304,8 +340,8 @@ function render(i){
   const s=stages[i];
   document.querySelectorAll('.stage').forEach((el,j)=>el.classList.toggle('sel', j===i));
   const shots=s.shots.map(sh=>
-    `<div class="shot${sh.snip?' wide':''}">
-       <div class="phone${sh.snip?' snip':''}">${sh.img?IMG(sh.img):sh.html}</div>
+    `<div class="shot${sh.snip?' wide':''}${sh.web?' xwide':''}">
+       <div class="phone${sh.snip?' snip':''}${sh.web?' web':''}">${sh.img?IMG(sh.img):sh.html}</div>
        <div class="cap">${sh.cap}<span class="tag${sh.mock?' mock':''}${sh.fig?' fig':''}">${sh.tag}</span></div>
      </div>`).join('');
   document.getElementById('detail').innerHTML=
